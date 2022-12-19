@@ -1,0 +1,24 @@
+<mat-card [style.max-width]="'210px'">
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      class="avatar"
+      [style.background-image]="
+        'url(' + (issue?.fields?.assignee?.avatarUrls ?? {})['48x48'] + ')'
+      "
+    ></div>
+    <mat-card-subtitle>{{ issue?.key }}</mat-card-subtitle>
+    <mat-card-title
+      ><p class="story-desc">{{ issue?.fields?.summary }}</p></mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div class="epic-name" [title]="issue?.fields?.epic?.name">
+      {{ issue?.fields?.epic?.name }}
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <img class="issue-type" [src]="issue?.fields?.issuetype?.iconUrl" />
+    <div class="points">{{ issue?.fields?.storyPoints }}</div>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,39 @@
+:host {
+  display: inline-block;
+}
+
+.avatar {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.epic-name {
+  background-color: #f4f5f7;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-size: 1rem;
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+
+.story-desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.points {
+  line-height: 1em;
+  background-color: rgba(9, 30, 66, 0.13);
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+mat-card-actions > *:not(:first-child) {
+  margin-left: 0.5em;
+}

@@ -1,0 +1,75 @@
+<div class="view">
+  <mat-form-field [color]="'primary'" appearance="outline">
+    <mat-label>Board</mat-label>
+    <input
+      type="search"
+      matInput
+      [value]="focusBoard?.name"
+      (input)="searchBoards($event)"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <span *ngIf="boardResults$ | async as boards">
+        <mat-option *ngIf="boards.values.length === 0" [disabled]="true"
+          >No results</mat-option
+        >
+        <mat-option
+          *ngFor="let b of boards.values"
+          [value]="b.name"
+          (click)="setFocusBoard(b)"
+        >
+          {{ b.name }}
+        </mat-option>
+      </span>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- Sprints -->
+  <mat-form-field [color]="'primary'" appearance="outline" *ngIf="focusBoard">
+    <mat-label>Sprint Status</mat-label>
+    <mat-select
+      (selectionChange)="loadSprints($event)"
+      [value]="this.focusSprintStatus"
+    >
+      <mat-option
+        *ngFor="let status of ['closed', 'active', 'future']"
+        [value]="status"
+      >
+        {{ status }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field [color]="'primary'" appearance="outline" *ngIf="focusBoard">
+    <mat-label>Sprint</mat-label>
+    <input
+      type="search"
+      matInput
+      [value]="focusSprint?.name"
+      (input)="searchSprints($event)"
+      [matAutocomplete]="sprintAuto"
+    />
+
+    <mat-autocomplete #sprintAuto="matAutocomplete">
+      <span *ngIf="sprintResults$ | async">
+        <span *ngIf="filteredSprints as sprint">
+          <mat-option
+            *ngIf="filteredSprints.values.length === 0"
+            [disabled]="true"
+            >No results</mat-option
+          >
+          <mat-option
+            *ngFor="let s of sprint.values"
+            [value]="s.name"
+            (click)="setFocusSprint(s)"
+          >
+            {{ s.name }}
+          </mat-option>
+        </span>
+      </span>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <app-canvas *ngIf="issues$ | async as issues" [issues]="issues"></app-canvas>
+</div>

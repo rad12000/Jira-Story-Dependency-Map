@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  jira_dependencies:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cbekmezian/jira-story-dependency-map:latest
+    ports:
+      - 80:80
+    env_file: .env

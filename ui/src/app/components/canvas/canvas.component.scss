@@ -1,0 +1,14 @@
+app-story {
+  margin: 15px;
+}
+
+.issue-col {
+  display: flex;
+  flex-direction: column;
+}
+
+#canvas {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
